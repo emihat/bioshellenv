@@ -5,8 +5,8 @@ MAINTAINER emihat <emi.2sheds.hattori@gmail.com>
 ENV SAMTOOLS_VERSION 1.3.1
 ENV TABIX_VERSION 0.2.6
 
-RUN apk add --update pcre-dev openssl-dev \
- && apk add --virtual build-dependencies build-base curl jq git bash \
+RUN apk add --update pcre-dev openssl-dev curl jq git bash \
+ && apk add --virtual build-dependencies build-base \
  && curl -L -o samtools-${SAMTOOLS_VERSION}.tar.bz2 \
     http://jaist.dl.sourceforge.net/project/samtools/samtools/${SAMTOOLS_VERSION}/samtools-${SAMTOOLS_VERSION}.tar.bz2 \
  && tar jxvf samtools-${SAMTOOLS_VERSION}.tar.bz2  \

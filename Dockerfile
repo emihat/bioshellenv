@@ -6,7 +6,7 @@ ENV SAMTOOLS_VERSION 1.3.1
 ENV TABIX_VERSION 0.2.6
 
 RUN apk add --update pcre-dev openssl-dev \
- && apk add --virtual build-dependencies build-base curl jq \
+ && apk add --virtual build-dependencies build-base curl jq git bash \
  && curl -L -o samtools-${SAMTOOLS_VERSION}.tar.bz2 \
     http://jaist.dl.sourceforge.net/project/samtools/samtools/${SAMTOOLS_VERSION}/samtools-${SAMTOOLS_VERSION}.tar.bz2 \
  && tar jxvf samtools-${SAMTOOLS_VERSION}.tar.bz2  \
@@ -21,6 +21,9 @@ RUN apk add --update pcre-dev openssl-dev \
  && make \
  && ln -sf /tabix-${TABIX_VERSION}/tabix /usr/local/bin/ \
  && apk del build-dependencies \
- && rm -rf /var/chache/apk/*
+ && rm -rf /var/chache/apk/* \
+ && mkdir /data \
+ && cd /data \
+ && git clone https://github.com/bio-shell/study1.git
 
 CMD ["bash"]

@@ -26,4 +26,6 @@ RUN apk add --update pcre-dev openssl-dev curl jq git bash \
  && cd /data \
  && git clone https://github.com/bio-shell/study1.git
 
+WORKDIR /data/study1/data
+
 CMD ["bash"]
